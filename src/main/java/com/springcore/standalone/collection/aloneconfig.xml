@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util.xsd">
+		
+		<!-- Standalone Collections -->
+		
+		<util:list list-class="java.util.LinkedList" id="bestfriends">
+			<value>Gagan</value>
+			<value>Raman</value>
+			<value>Aman</value>
+			<value>Chaman</value>
+		</util:list>
+		
+		<util:map map-class="java.util.HashMap" id="coursefees">
+			<entry key="Java" value="10000"/>
+			<entry key="Spring" value="12000"/>
+			<entry key="boot" value="15000"/>
+			<entry key="Angular" value="8000"/>
+		</util:map>
+		
+		<util:properties id="mobileno">
+			<prop key="Samsung">931934837</prop>
+			<prop key="Motorola">7896725439</prop>
+			<prop key="Redmi">9217374756</prop>
+			<prop key="Iphone">987654321</prop>
+		</util:properties>
+		
+		
+	<!-- This is our bean --><!-- Property tag -->
+		<bean class="com.springcore.standalone.collection.Person" name="person1">
+			<property name="friends">
+				<ref bean="bestfriends"/>
+			</property>
+			
+			<property name="feestructure" ref="coursefees"/>
+			
+			<property name="properties" ref="mobileno"/>
+			
+			<!-- <property name="friends" ref="bestfriends"/> -->
+		</bean>
+		
+</beans>

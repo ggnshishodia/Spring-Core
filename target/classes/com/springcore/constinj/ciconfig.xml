@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- This is our bean --><!-- Constructor Injection -->
+	<!-- c schema -->
+	<bean class="com.springcore.constinj.Certificates" name="cert" c:name="Java Developer"/>
+	
+	<bean class="com.springcore.constinj.Person" name="person">
+		<constructor-arg>
+			<value>Gagan</value>
+		</constructor-arg>
+		<constructor-arg value="22"/>
+		<constructor-arg ref="cert"/>
+		<constructor-arg>
+			<list>
+				<value>Cognizant</value>
+				<value>Company 2</value>
+				<value>Adobe</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- <bean class="com.springcore.constinj.Certificates" name="cert">
+		<constructor-arg value="AWS Cloud Practioner"/>
+	</bean> -->	
+	
+	<!-- We cannot add type as attribute in bean tag <bean class="com.springcore.constinj.Ambiguity" name="add" c:a="12" c:b="24" type="int"/> -->
+	
+	
+	<bean class="com.springcore.constinj.Ambiguity" name="add">
+		<constructor-arg value ="12" type="double" index="1"/>
+		<constructor-arg value ="24" type="double" index="0"/>
+	</bean>
+	
+</beans>
